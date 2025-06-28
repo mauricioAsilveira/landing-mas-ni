@@ -1,0 +1,57 @@
+{
+  "imobs": [
+    {
+      "id": 1,
+      "titulo": "PRÉDIO COMERCIAL LOCALIZAÇÃO PRIVILEGIADA DA SAÚDE",
+      "palavraDestaque": "Localização estratégica",
+      "perfil": "Usado",
+      "endereco": {
+        "rua": "Rua Eduardo De Brito",
+        "unidade": "225a",
+        "bairro": "Centro",
+        "cidade": "Passo Fundo - RS",
+        "cep": "99010-180"
+      },
+      "complemento": "Localizado na principal área médica da cidade",
+      "proximo": "Hotel Aguadero",
+      "valor": 4000000,
+      "terreno": 500,
+      "areaConstruida": 350,
+      "vagas": 4,
+      "lavabos": 2,
+      "elevador": "Sim",
+      "fotos": [
+        "https://exemplo.com.br/fotos/predio1.jpg",
+        "https://exemplo.com.br/fotos/predio2.jpg",
+        "https://exemplo.com.br/fotos/predio3.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "APARTAMENTO DE ALTO PADRÃO NO CENTRO",
+      "palavraDestaque": "Alto padrão",
+      "perfil": "Novo",
+      "endereco": {
+        "rua": "Av. Brasil",
+        "unidade": "101",
+        "bairro": "Centro",
+        "cidade": "Passo Fundo - RS",
+        "cep": "99010-020"
+      },
+      "complemento": "Próximo à praça principal",
+      "proximo": "Shopping Passo Fundo",
+      "valor": 750000,
+      "terreno": null,
+      "areaConstruida": 120,
+      "vagas": 2,
+      "lavabos": 1,
+      "elevador": "Sim",
+      "fotos": [
+        "https://exemplo.com.br/fotos/apto1.jpg",
+        "https://exemplo.com.br/fotos/apto2.jpg"
+      ]
+    }
+    /* Adicione novos objetos aqui, separando por vírgula */
+  ]
+}
+

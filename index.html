@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Landing MAS-NI – Imóveis Tytan</title>
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; background:#F5F5F5; color:#333; }
+    .container { max-width:960px; margin:2rem auto; padding:0 1rem; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .imovel { margin-bottom:3rem; border-bottom:1px solid #eee; padding-bottom:2rem; }
+    .imovel h1 { font-size:1.8rem; margin-bottom:.5rem; }
+    .highlight { background:#00A4B7; color:#fff; padding:2px 6px; border-radius:3px; }
+    .info-geral { list-style:none; padding:0; margin:1rem 0; }
+    .info-geral li { margin-bottom:.4rem; }
+    .galeria { display:flex; gap:.5rem; overflow-x:auto; margin-bottom:1rem; }
+    .galeria img { max-height:150px; border-radius:4px; }
+    .caracteristicas { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:.5rem; margin-bottom:1rem; }
+    .caracteristica { background:#F5F5F5; padding:.5rem; border-radius:3px; text-align:center; font-size:.9rem; }
+    .cta { display:flex; gap:1rem; margin-top:1rem; }
+    .btn { padding:.8rem 1.2rem; border:none; border-radius:4px; cursor:pointer; font-size:1rem; text-decoration:none; color:#fff; }
+    .btn-whatsapp { background:#25D366; }
+    .btn-redes a { margin-right:.5rem; color:#00304A; text-decoration:none; font-weight:bold; }
+    footer { text-align:center; font-size:.8rem; padding:1rem 0; color:#666; }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="imoveis-container">
+    <!-- Imóveis serão injetados aqui -->
+  </div>
+
+  <footer>
+    © 2025 MAS-NI | Mauricio Silveira – CRECI 74302
+  </footer>
+
+  <script>
+    // 1) URL do JSON gerado pelo scraper/Web Scraper
+    const JSON_URL = '/imoveis.json';
+
+    // 2) Função para destacar palavra-chave
+    function highlight(text, word) {
+      if(!word) return text;
+      const regex = new RegExp(`(${word})`, 'gi');
+      return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    // 3) Monta o HTML de cada imóvel
+    function renderImovel(im) {
+      // Monta endereço completo
+      const end = `${im.endereco.rua}, Unidade ${im.endereco.unidade} – ${im.endereco.bairro}, ${im.endereco.cidade}`;
+      // Galeria (array de URLs)
+      const galeriaHTML = (im.fotos || []).map(src =>
+        `<img src="${src}" alt="${im.titulo}">`
+      ).join('');
+      // Características simples (inclua todas que precisar)
+      const specs = [
+        `Valor: R$ ${im.valor.toLocaleString('pt-BR')}`,
+        `Perfil: ${im.perfil}`,
+        `CEP: ${im.endereco.cep}`,
+        `Área Terra: ${im.terreno || '–'} m²`,
+        `Área Const.: ${im.areaConstruida || '–'} m²`,
+        `Vagas: ${im.vagas || 0}`,
+        `Lavabos: ${im.lavabos || 0}`,
+        `Elevador: ${im.elevador || '–'}`,
+        ...(im.complemento ? [`Complemento: ${im.complemento}`] : [])
+      ].map(t => `<div class="caracteristica">${t}</div>`).join('');
+
+      return `
+        <article class="imovel">
+          <h1>${highlight(im.titulo, im.palavraDestaque)}</h1>
+          <div class="galeria">${galeriaHTML}</div>
+          <ul class="info-geral">
+            <li><strong>Endereço:</strong> ${end}</li>
+            <li><strong>CEP:</strong> ${im.endereco.cep}</li>
+            <li><strong>Próximo a:</strong> ${im.proximo || '–'}</li>
+          </ul>
+          <div class="caracteristicas">${specs}</div>
+          <div class="cta">
+            <a class="btn btn-whatsapp"
+               href="https://wa.me/5549999832413?text=Olá%20Mauricio,%20tenho%20interesse%20nesse%20imóvel%20(ID:${im.id})"
+               target="_blank">
+               Falar no WhatsApp
+            </a>
+            <div class="btn-redes">
+              <a href="https://www.facebook.com/MauricioSilveira1962/" target="_blank">Facebook</a>
+              <a href="https://www.instagram.com/mascorretor" target="_blank">Instagram</a>
+              <a href="https://www.threads.net/@mascorretor" target="_blank">Threads</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // 4) Fetch e render em sequência
+    fetch(JSON_URL, { credentials:'include' })
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('imoveis-container');
+        if (!data.imobs || !data.imobs.length) {
+          container.innerHTML = '<p>Nenhum imóvel encontrado.</p>';
+          return;
+        }
+        container.innerHTML = data.imobs.map(renderImovel).join('');
+      })
+      .catch(err => {
+        document.getElementById('imoveis-container').innerHTML =
+          `<p>Erro ao carregar imóveis: ${err.message}</p>`;
+        console.error(err);
+      });
+  </script>
+
+  <!-- Incluído conforme pedido: carrega o main.js -->
+  <script src="js/main.js"></script>
+</body>
+</html>
