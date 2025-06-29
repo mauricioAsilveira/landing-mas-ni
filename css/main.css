@@ -1,125 +1,150 @@
-/* 1. Reset / Normalize */
-*,
-*::before,
-*::after {
+/* main.css */
+
+/* Reset mínimo e tipografia */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* 2. Variáveis (cores, tipografia) */
-:root {
-  --color-bg: #f8f7f4;
-  --color-primary: #1f2933;      /* cinza escuro */
-  --color-accent: #004459;       /* azul petróleo */
-  --color-light: #ffffff;        /* off-white */
-  --font-base: 'Helvetica Neue', Arial, sans-serif;
-  --font-size: 16px;
-  --spacing-unit: 1rem;
-}
-
-/* 3. Tipografia global */
 body {
-  font-family: var(--font-base);
-  font-size: var(--font-size);
-  color: var(--color-primary);
-  background: var(--color-bg);
-  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  background: #F5F5F5;
+  color: #333;
+  line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5 {
-  font-weight: 600;
-  margin-bottom: calc(var(--spacing-unit) / 2);
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* 4. Helpers */
-.text-center { text-align: center; }
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* 5. Layout principal */
-header, main, footer {
-  padding: var(--spacing-unit) 0;
-}
-
-/* 6. Componentes */
-/* 6.1 Hero */
-.hero {
-  background: var(--color-accent);
-  color: var(--color-light);
-  padding: calc(var(--spacing-unit) * 2) 0;
-}
-.hero__title { font-size: 2rem; }
-.hero__subtitle { margin-top: var(--spacing-unit); }
-
-/* 6.2 Carrossel */
-.carousel {
-  position: relative;
-  overflow: hidden;
-}
-.carousel__track {
-  display: flex;
-  transition: transform 0.4s ease;
-}
-.carousel__slide {
-  min-width: 100%;
-}
-
-/* 6.3 Cards de imóvel */
-.imovel-card {
-  background: var(--color-light);
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: var(--spacing-unit);
-}
-.imovel-card__img {
+/* Layout principal */
+header,
+main,
+footer {
   width: 100%;
-  display: block;
-}
-.imovel-card__body {
-  padding: var(--spacing-unit);
-}
-.imovel-card__title { font-size: 1.25rem; }
-.imovel-card__price {
-  color: var(--color-accent);
-  font-weight: 700;
-  margin-top: var(--spacing-unit);
 }
 
-/* 6.4 Botões */
+/* Header */
+header {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+  padding: 1rem;
+  text-align: center;
+}
+
+header img {
+  max-width: 180px;
+  height: auto;
+}
+
+/* Container principal (main) */
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+}
+
+/* Card de imóvel */
+.imovel {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2rem;
+}
+
+.imovel h2 {
+  font-size: 1.6rem;
+  margin-bottom: .5rem;
+}
+
+/* Destaque de palavra-chave */
+.highlight {
+  background: #00A4B7;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* Lista de informações gerais */
+.info-geral {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.info-geral li {
+  margin-bottom: .4rem;
+}
+
+/* Galeria de fotos */
+.galeria {
+  display: flex;
+  gap: .5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+
+.galeria img {
+  max-height: 150px;
+  border-radius: 4px;
+}
+
+/* Ficha técnica / características */
+.caracteristicas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.caracteristica {
+  background: #F5F5F5;
+  padding: .5rem;
+  border-radius: 3px;
+  text-align: center;
+  font-size: .9rem;
+}
+
+/* Chamadas para ação */
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .btn {
   display: inline-block;
-  padding: 0.75em 1.5em;
-  text-decoration: none;
+  padding: .8rem 1.2rem;
+  border: none;
   border-radius: 4px;
-  font-weight: 600;
   cursor: pointer;
-}
-.btn--primary {
-  background: var(--color-accent);
-  color: var(--color-light);
-}
-.btn--secondary {
-  background: transparent;
-  border: 2px solid var(--color-accent);
-  color: var(--color-accent);
+  font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
 }
 
-/* 7. Responsividade */
-@media (min-width: 768px) {
-  .hero__title { font-size: 3rem; }
-  .imovel-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-unit);
-  }
+.btn-whatsapp {
+  background: #25D366;
 }
-@media (min-width: 1024px) {
-  .imovel-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+
+/* Links de redes sociais */
+.btn-redes a {
+  margin-right: .5rem;
+  color: #00304A;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: .8rem;
+  padding: 1rem 0;
+  color: #666;
+  background: #fff;
+  margin-top: 2rem;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, .05);
 }

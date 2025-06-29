@@ -1,115 +1,249 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Landing page dinâmica da Tytan Imóveis em Passo Fundo–RS. Descubra, compare e fale direto por WhatsApp.">
   <title>Landing MAS-NI – Imóveis Tytan</title>
+
+  <!-- SEO/Open Graph básico -->
+  <meta property="og:title" content="Imóveis Tytan – Landing MAS-NI">
+  <meta property="og:description" content="Portfólio sempre atualizado de imóveis comerciais e residenciais em Passo Fundo/RS. Fale no WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mauricioasilveira.github.io/landing-mas-ni/">
+  <meta property="og:image" content="https://mauricioasilveira.github.io/landing-mas-ni/assets/logos/tt-logo.png">
+
   <style>
-    body { margin:0; font-family:Arial, sans-serif; background:#F5F5F5; color:#333; }
-    .container { max-width:960px; margin:2rem auto; padding:0 1rem; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.1); }
-    .imovel { margin-bottom:3rem; border-bottom:1px solid #eee; padding-bottom:2rem; }
-    .imovel h1 { font-size:1.8rem; margin-bottom:.5rem; }
-    .highlight { background:#00A4B7; color:#fff; padding:2px 6px; border-radius:3px; }
-    .info-geral { list-style:none; padding:0; margin:1rem 0; }
-    .info-geral li { margin-bottom:.4rem; }
-    .galeria { display:flex; gap:.5rem; overflow-x:auto; margin-bottom:1rem; }
-    .galeria img { max-height:150px; border-radius:4px; }
-    .caracteristicas { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:.5rem; margin-bottom:1rem; }
-    .caracteristica { background:#F5F5F5; padding:.5rem; border-radius:3px; text-align:center; font-size:.9rem; }
-    .cta { display:flex; gap:1rem; margin-top:1rem; }
-    .btn { padding:.8rem 1.2rem; border:none; border-radius:4px; cursor:pointer; font-size:1rem; text-decoration:none; color:#fff; }
-    .btn-whatsapp { background:#25D366; }
-    .btn-redes a { margin-right:.5rem; color:#00304A; text-decoration:none; font-weight:bold; }
-    footer { text-align:center; font-size:.8rem; padding:1rem 0; color:#666; }
+    /* Reset mínimo e tipografia */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #F5F5F5;
+      color: #333;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    header, main, footer { width: 100%; }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,.08);
+      padding: 1rem;
+      text-align: center;
+    }
+    header img {
+      max-width: 180px;
+      height: auto;
+      loading: lazy;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    }
+    .imovel {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 2rem;
+    }
+    .imovel h2 {
+      font-size: 1.6rem;
+      margin-bottom: .5rem;
+    }
+    .highlight {
+      background: #00A4B7;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .info-geral {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    .info-geral li {
+      margin-bottom: .4rem;
+    }
+    .galeria {
+      display: flex;
+      gap: .5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 1rem;
+    }
+    .galeria img {
+      max-height: 150px;
+      border-radius: 4px;
+      loading: lazy;
+    }
+    .caracteristicas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .caracteristica {
+      background: #F5F5F5;
+      padding: .5rem;
+      border-radius: 3px;
+      text-align: center;
+      font-size: .9rem;
+    }
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: .8rem 1.2rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #fff;
+    }
+    .btn-whatsapp { background: #25D366; }
+    .btn-redes a {
+      margin-right: .5rem;
+      color: #00304A;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      font-size: .8rem;
+      padding: 1rem 0;
+      color: #666;
+      background: #fff;
+      margin-top: 2rem;
+      box-shadow: 0 -1px 4px rgba(0,0,0,.05);
+    }
   </style>
 </head>
 <body>
 
-  <div class="container" id="imoveis-container">
-    <!-- Imóveis serão injetados aqui -->
-  </div>
+  <header>
+    <a href="/">
+      <img
+        src="assets/logos/tt-logo.png"
+        alt="Logo Tytan Imóveis"
+        loading="lazy"
+      >
+    </a>
+  </header>
+
+  <main id="imoveis-container">
+    <!-- Imóveis serão carregados aqui -->
+  </main>
 
   <footer>
     © 2025 MAS-NI | Mauricio Silveira – CRECI 74302
   </footer>
 
   <script>
-    // 1) URL do JSON gerado pelo scraper/Web Scraper
-    const JSON_URL = '/imoveis.json';
+    // URL do JSON gerado pelo scraper
+    const JSON_URL = './imoveis.json';
 
-    // 2) Função para destacar palavra-chave
+    // Escapa caracteres especiais antes de criar RegExp
+    function escapeRegExp(str = '') {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // Destaca palavra-chave
     function highlight(text, word) {
-      if(!word) return text;
-      const regex = new RegExp(`(${word})`, 'gi');
+      if (!word) return text;
+      const esc = escapeRegExp(word);
+      const regex = new RegExp(`(${esc})`, 'gi');
       return text.replace(regex, '<span class="highlight">$1</span>');
     }
 
-    // 3) Monta o HTML de cada imóvel
+    // Monta cada imóvel
     function renderImovel(im) {
-      // Monta endereço completo
-      const end = `${im.endereco.rua}, Unidade ${im.endereco.unidade} – ${im.endereco.bairro}, ${im.endereco.cidade}`;
-      // Galeria (array de URLs)
-      const galeriaHTML = (im.fotos || []).map(src =>
-        `<img src="${src}" alt="${im.titulo}">`
-      ).join('');
-      // Características simples (inclua todas que precisar)
-      const specs = [
+      const endParts = [
+        im.endereco.rua,
+        im.endereco.unidade ? `Unid. ${im.endereco.unidade}` : null,
+        im.endereco.bairro,
+        im.endereco.cidade
+      ].filter(Boolean).join(' – ');
+      const galeriaHTML = (im.fotos || []).length
+        ? im.fotos.map((src,i) =>
+            `<img src="${src}" alt="Foto ${i+1} de ${im.titulo}" loading="lazy">`
+          ).join('')
+        : '<p>Sem imagens disponíveis.</p>';
+
+      const specsArr = [
         `Valor: R$ ${im.valor.toLocaleString('pt-BR')}`,
         `Perfil: ${im.perfil}`,
-        `CEP: ${im.endereco.cep}`,
-        `Área Terra: ${im.terreno || '–'} m²`,
+        `Área Terreno: ${im.terreno || '–'} m²`,
         `Área Const.: ${im.areaConstruida || '–'} m²`,
         `Vagas: ${im.vagas || 0}`,
         `Lavabos: ${im.lavabos || 0}`,
-        `Elevador: ${im.elevador || '–'}`,
-        ...(im.complemento ? [`Complemento: ${im.complemento}`] : [])
-      ].map(t => `<div class="caracteristica">${t}</div>`).join('');
+        `Elevador: ${im.elevador || '–'}`
+      ];
+      if (im.complemento) specsArr.push(`Complemento: ${im.complemento}`);
+      const specsHTML = specsArr
+        .map(t => `<div class="caracteristica">${t}</div>`)
+        .join('');
+
+      const whatsappMsg = encodeURIComponent(
+        `Olá Mauricio, tenho interesse nesse imóvel (ID: ${im.id})`
+      );
 
       return `
         <article class="imovel">
-          <h1>${highlight(im.titulo, im.palavraDestaque)}</h1>
+          <h2>${highlight(im.titulo, im.palavraDestaque)}</h2>
           <div class="galeria">${galeriaHTML}</div>
           <ul class="info-geral">
-            <li><strong>Endereço:</strong> ${end}</li>
+            <li><strong>Endereço:</strong> ${endParts}</li>
             <li><strong>CEP:</strong> ${im.endereco.cep}</li>
             <li><strong>Próximo a:</strong> ${im.proximo || '–'}</li>
           </ul>
-          <div class="caracteristicas">${specs}</div>
+          <div class="caracteristicas">${specsHTML}</div>
           <div class="cta">
-            <a class="btn btn-whatsapp"
-               href="https://wa.me/5549999832413?text=Olá%20Mauricio,%20tenho%20interesse%20nesse%20imóvel%20(ID:${im.id})"
-               target="_blank">
-               Falar no WhatsApp
-            </a>
-            <div class="btn-redes">
-              <a href="https://www.facebook.com/MauricioSilveira1962/" target="_blank">Facebook</a>
-              <a href="https://www.instagram.com/mascorretor" target="_blank">Instagram</a>
-              <a href="https://www.threads.net/@mascorretor" target="_blank">Threads</a>
+            <a
+              class="btn btn-whatsapp"
+  href="https://wa.me/54999832413?text=Olá%20Mauricio,%20tenho%20interesse%20nesse%20imóvel%20(ID:IMV-0001)"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Falar no WhatsApp
+              <a 
+	href="https://www.facebook.com/MauricioSilveira1962/" target="_blank" rel="noopener noreferrer"
+>Facebook
+</a>
+              <a href="https://www.instagram.com/mascorretor" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.threads.net/@mascorretor" target="_blank" rel="noopener noreferrer">Threads</a>
             </div>
           </div>
         </article>
       `;
     }
 
-    // 4) Fetch e render em sequência
-    fetch(JSON_URL, { credentials:'include' })
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('imoveis-container');
-        if (!data.imobs || !data.imobs.length) {
-          container.innerHTML = '<p>Nenhum imóvel encontrado.</p>';
-          return;
-        }
-        container.innerHTML = data.imobs.map(renderImovel).join('');
+    // Fetch + render
+    fetch(JSON_URL)
+      .then(r => {
+        if (!r.ok) throw new Error(r.statusText);
+        return r.json();
       })
-      .catch(err => {
-        document.getElementById('imoveis-container').innerHTML =
-          `<p>Erro ao carregar imóveis: ${err.message}</p>`;
-        console.error(err);
+      .then(data => {
+        const cont = document.getElementById('imoveis-container');
+        const list = data.imobs || data.imoveis || [];
+        cont.innerHTML = list.length
+          ? list.map(renderImovel).join('')
+          : '<p>Nenhum imóvel encontrado.</p>';
+      })
+      .catch(e => {
+        const cont = document.getElementById('imoveis-container');
+        cont.innerHTML = `<p>Erro ao carregar imóveis: ${e.message}</p>`;
+        console.error(e);
       });
   </script>
 
-  <!-- Incluído conforme pedido: carrega o main.js -->
-  <script src="js/main.js"></script>
 </body>
 </html>
+```

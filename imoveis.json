@@ -1,57 +1,57 @@
 {
   "imobs": [
     {
-      "id": 1,
+      "id": "IMV-0001",
       "titulo": "PRÉDIO COMERCIAL LOCALIZAÇÃO PRIVILEGIADA DA SAÚDE",
-      "palavraDestaque": "Localização estratégica",
-      "perfil": "Usado",
+      "palavraDestaque": "SAÚDE",
       "endereco": {
-        "rua": "Rua Eduardo De Brito",
-        "unidade": "225a",
+        "rua": "Rua Dr. Flores",
+        "unidade": "sala 101",
         "bairro": "Centro",
-        "cidade": "Passo Fundo - RS",
-        "cep": "99010-180"
+        "cidade": "Passo Fundo",
+        "cep": "99010-000"
       },
-      "complemento": "Localizado na principal área médica da cidade",
-      "proximo": "Hotel Aguadero",
-      "valor": 4000000,
+      "fotos": [
+        "assets/images/imovel1-1.jpg",
+        "assets/images/imovel1-2.jpg",
+        "assets/images/imovel1-3.jpg"
+      ],
+      "valor": 1500000,
+      "perfil": "Comercial",
       "terreno": 500,
       "areaConstruida": 350,
       "vagas": 4,
       "lavabos": 2,
       "elevador": "Sim",
-      "fotos": [
-        "https://exemplo.com.br/fotos/predio1.jpg",
-        "https://exemplo.com.br/fotos/predio2.jpg",
-        "https://exemplo.com.br/fotos/predio3.jpg"
-      ]
+      "complemento": "Próximo ao IOT/Unimed",
+      "proximo": "Hospital Unimed",
+      "whatsapp": "549999832413"
     },
     {
-      "id": 2,
-      "titulo": "APARTAMENTO DE ALTO PADRÃO NO CENTRO",
-      "palavraDestaque": "Alto padrão",
-      "perfil": "Novo",
+      "id": "IMV-0002",
+      "titulo": "Apartamento Residencial Moderno no Centro",
+      "palavraDestaque": "Residencial",
       "endereco": {
-        "rua": "Av. Brasil",
-        "unidade": "101",
+        "rua": "Av. Julio de Castilhos",
+        "unidade": "apto 502",
         "bairro": "Centro",
-        "cidade": "Passo Fundo - RS",
-        "cep": "99010-020"
+        "cidade": "Passo Fundo",
+        "cep": "99010-100"
       },
-      "complemento": "Próximo à praça principal",
-      "proximo": "Shopping Passo Fundo",
-      "valor": 750000,
+      "fotos": [
+        "assets/images/imovel2-1.jpg",
+        "assets/images/imovel2-2.jpg"
+      ],
+      "valor": 420000,
+      "perfil": "Residencial",
       "terreno": null,
       "areaConstruida": 120,
-      "vagas": 2,
+      "vagas": 1,
       "lavabos": 1,
       "elevador": "Sim",
-      "fotos": [
-        "https://exemplo.com.br/fotos/apto1.jpg",
-        "https://exemplo.com.br/fotos/apto2.jpg"
-      ]
+      "complemento": null,
+      "proximo": "Praça Marechal Floriano",
+      "whatsapp": "549999832413"
     }
-    /* Adicione novos objetos aqui, separando por vírgula */
   ]
 }
-
