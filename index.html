@@ -1,20 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Landing page dinâmica da Tytan Imóveis em Passo Fundo–RS. Descubra, compare e fale direto por WhatsApp.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Landing page dinâmica da Tytan Imóveis em Passo Fundo–RS. Descubra, compare e fale direto por WhatsApp." />
   <title>Landing MAS-NI – Imóveis Tytan</title>
 
-  <!-- SEO/Open Graph básico -->
-  <meta property="og:title" content="Imóveis Tytan – Landing MAS-NI">
-  <meta property="og:description" content="Portfólio sempre atualizado de imóveis comerciais e residenciais em Passo Fundo/RS. Fale no WhatsApp.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mauricioasilveira.github.io/landing-mas-ni/">
-  <meta property="og:image" content="https://mauricioasilveira.github.io/landing-mas-ni/assets/logos/tt-logo.png">
-
   <style>
-    /* Reset mínimo e tipografia */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: Arial, sans-serif;
@@ -44,6 +36,37 @@
       background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,.1);
     }
+
+    .slider-container {
+      padding: 2rem;
+    }
+    .slider-container label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .slider-container input[type="range"] {
+      width: 100%;
+      height: 8px;
+      background: #ddd;
+      border-radius: 5px;
+      outline: none;
+    }
+    .slider-container input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #3498db;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+    .slider-container #valor-exibido {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      color: #2c3e50;
+    }
+
     .imovel {
       margin-bottom: 3rem;
       border-bottom: 1px solid #eee;
@@ -129,16 +152,29 @@
 
   <header>
     <a href="/">
-      <img
-        src="assets/logos/tt-logo.png"
-        alt="Logo Tytan Imóveis"
-        loading="lazy"
-      >
+      <img src="assets/logos/tt-logo.png" alt="Logo Tytan Imóveis" loading="lazy" />
     </a>
   </header>
 
-  <main id="imoveis-container">
-    <!-- Imóveis serão carregados aqui -->
+  <main>
+    <section class="slider-container">
+      <label for="valor-interesse">Faixa de valor de interesse:</label>
+      <input
+        type="range"
+        id="valor-interesse"
+        name="valor-interesse"
+        min="0"
+        max="20000000"
+        step="50000"
+        value="500000"
+        oninput="atualizarValor(this.value)"
+      />
+      <div id="valor-exibido">R$ 500.000</div>
+    </section>
+
+    <div id="imoveis-container">
+      <!-- Imóveis serão carregados aqui -->
+    </div>
   </main>
 
   <footer>
@@ -146,15 +182,12 @@
   </footer>
 
   <script>
-    // URL do JSON gerado pelo scraper
     const JSON_URL = './imoveis.json';
 
-    // Escapa caracteres especiais antes de criar RegExp
     function escapeRegExp(str = '') {
       return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    // Destaca palavra-chave
     function highlight(text, word) {
       if (!word) return text;
       const esc = escapeRegExp(word);
@@ -162,7 +195,6 @@
       return text.replace(regex, '<span class="highlight">$1</span>');
     }
 
-    // Monta cada imóvel
     function renderImovel(im) {
       const endParts = [
         im.endereco.rua,
@@ -205,45 +237,8 @@
           </ul>
           <div class="caracteristicas">${specsHTML}</div>
           <div class="cta">
-            <a
-              class="btn btn-whatsapp"
-  href="https://wa.me/54999832413?text=Olá%20Mauricio,%20tenho%20interesse%20nesse%20imóvel%20(ID:IMV-0001)"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Falar no WhatsApp
-              <a 
-	href="https://www.facebook.com/MauricioSilveira1962/" target="_blank" rel="noopener noreferrer"
->Facebook
-</a>
-              <a href="https://www.instagram.com/mascorretor" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://www.threads.net/@mascorretor" target="_blank" rel="noopener noreferrer">Threads</a>
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
-    // Fetch + render
-    fetch(JSON_URL)
-      .then(r => {
-        if (!r.ok) throw new Error(r.statusText);
-        return r.json();
-      })
-      .then(data => {
-        const cont = document.getElementById('imoveis-container');
-        const list = data.imobs || data.imoveis || [];
-        cont.innerHTML = list.length
-          ? list.map(renderImovel).join('')
-          : '<p>Nenhum imóvel encontrado.</p>';
-      })
-      .catch(e => {
-        const cont = document.getElementById('imoveis-container');
-        cont.innerHTML = `<p>Erro ao carregar imóveis: ${e.message}</p>`;
-        console.error(e);
-      });
-  </script>
-
-</body>
-</html>
-```
+            <a class="btn btn-whatsapp" href="https://wa.me/54999832413?text=Olá%20Mauricio,%20tenho%20interesse%20nesse%20imóvel%20(ID:${im.id})" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+            <a href="https://www.facebook.com/MauricioSilveira1962/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/mascorretor" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.threads.net/@mascorretor" target="_blank" rel="noopener noreferrer">Threads</a>
+          </div
